@@ -1,6 +1,6 @@
-# master
+# Ptychography using multi-spot arrays
 
-This project uses [**uv**](https://github.com/astral-sh/uv) for Python environment and dependency management.
+Source code for my master's thesis project. This project uses [**uv**](https://github.com/astral-sh/uv) for Python environment and dependency management.
 
 ## Quick start
 
