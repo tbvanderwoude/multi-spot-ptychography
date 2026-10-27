@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "master"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+authors = [
+  { name = "Thom van der Woude", email = "tbvanderwoude@protonmail.com" },
+  { name = "Thom van der Woude", email = "t.b.vanderwoude@student.tudelft.nl" },
+]
+dependencies = [
+  "black[jupyter]>=25.9.0",
+  "ipykernel>=7.1.0",
+  "jupyterlab>=4.4.10",
+  "matplotlib>=3.10.7",
+  "notebook>=7.4.7",
+  "numpy>=2.3.4",
+  "optax>=0.2.6",
+  # Get just CPU JAX by default
+  "jax>=0.8.0",
+  "pandas>=2.3.3",
+  "pre-commit>=4.5.1",
+  "scikit-learn>=1.8.0",
+  "scikit-image>=0.26.0",
+  "scipy>=1.16.3",
+  "seaborn>=0.13.2",
+  "sympy>=1.14.0",
+  "tqdm>=4.67.3",
+  "h5py>=3.16.0",
+  "xprof>=2.22.2",
+  "tensorboard>=2.20.0",
+  "openslide-python>=1.4.3",
+  "openslide-bin>=4.0.0.13",
+  "ptylab[gpu]>=0.3.0",
+  "xxhash>=4.0.1",
+  "dacite>=1.9.2",
+]
+
+[project.optional-dependencies]
+# GPU via pip-provided CUDA/cuDNN wheels (recommended by JAX docs)
+cuda12 = ['jax[cuda12]>=0.8.0']
+cuda13 = ['jax[cuda13]>=0.8.0']
+
+[tool.uv]
+conflicts = [
+  [{ extra = "cuda12" }, { extra = "cuda13" }],
+]
+
+[tool.uv.sources]
+ptylab = { git = "https://github.com/PtyLab/PtyLab.py" }
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
